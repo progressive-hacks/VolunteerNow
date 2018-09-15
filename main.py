@@ -17,7 +17,7 @@ JINJA_ENV = jinja2.Environment(
 class Event(ndb.Model):
     user = ndb.StringProperty();
     eventName = ndb.StringProperty();
-    # start_time = ndb.DateTimeProperty();
+    # start_time = TimeProperty();
     # end_time = ndb.DateTimeProperty();
     description = ndb.TextProperty();
     # geolocation = ndb.GeoPtProperty()
