@@ -12,15 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import webapp2
+import jinja2
 
 
-class MainPage(webapp2.RequestHandler):
+JINJA_ENV = jinja2.Environment(
+    loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions = ['jinja2.ext.autoescape'],
+    autoescape =True
+)
+
+
+class HomePage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Hello, World!')
+        homepage_template = JINJA_ENV.get_template('templates/homepage.html')
+        self.response.write(homepage_template.render(content="hello, world"))
+
+class CalenderPage(webapp2.RequestHandler):
+    def get(self):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', HomePage),
 ], debug=True)
