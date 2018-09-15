@@ -33,7 +33,7 @@ class OrganizerData(ndb.Model):
 class HomePage(webapp2.RequestHandler):
 
     def get(self):
-        content = JINJA_ENV.get_template('templates/homepage.html')
+        content = JINJA_ENV.get_template('templates/frontpage.html')
         user = users.get_current_user()
         if user:
             start_link = "/volunteer"

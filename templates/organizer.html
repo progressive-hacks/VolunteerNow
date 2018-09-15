@@ -1,19 +1,37 @@
 <html>
   <head>
+    <link rel= "stylesheet" href="static/organizer.css">
   </head>
   <body>
+    <h1>Submit a volunteering event!</h1>
+  <div class="centered">
+      <!-- <div class="group"> -  -->
     <form method="post" action="/volunteer" >
-      <p>Enter event name:</p> <br>
-      <input type="text" name="eventName" ></input>
-      <p> Enter description of event: </p> <br>
-      <input type="text" name="description" ></input>
+      <!-- <p>Enter event name:</p> <br> -->
+      <input type="text" id ="name" name="eventName" ></input>
+      <label for="name">Event Name</label>
+      <div class="bar"></div>
+      <br>
+
+      <input type="text" id ="name" name="description" ></input>
+      <label for="name">Event Description</label>
+      <div class="bar"></div>
+      <br>
       <!-- Autumn does not know how to enter right datetime format so she commented out datetime in datastore -->
-      <p> Enter start time (YYYY/MM/DD/hh/mm): </p> <br>
-      <input type="text" name="start_time"></input>
-      <p> Enter end time (YYYY/MM/DD/hh/mm): </p> <br>
-      <input type="text" name="end_time" ></input> -->
+      <!-- <p> Enter start time (YYYY/MM/DD/hh/mm): </p> <br> -->
+      <input type="text" id ="name" name="start_time"></input>
+      <label for="name">Start Time in (YYYY/MM/DD/hh/mm) </label>
+      <div class="bar"></div>
+      <br>
+      <!-- <p> Enter end time (YYYY/MM/DD/hh/mm): </p> <br> -->
+      <input type="text" id ="name" name="end_time" ></input> -->
+      <label for="name">End Time in (YYYY/MM/DD/hh/mm) </label>
+      <div class="bar"></div>
       <br>
       <input type="submit" value="Submit">
 
+     </div>
+  <!-- </div> -->
   </body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </html>
