@@ -23,7 +23,7 @@ def get_this_week():
 
     t = datetime.today() - timedelta(days = offset)
     for _ in range(7):
-        dates.append((t.month,t.day))
+        dates.append((t.month, t.day))
         t += timedelta(days = 1) 
 
     return dates
