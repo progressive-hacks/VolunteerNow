@@ -32,8 +32,7 @@ class OrganizerData(ndb.Model):
 
 class HomePage(webapp2.RequestHandler):
 
-<<<<<<< HEAD
-=======
+
     def get(self):
         content = JINJA_ENV.get_template('templates/frontpage.html')
         user = users.get_current_user()
@@ -45,7 +44,7 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(content.render(content=start_link))
 
 class OrganizerHandler(webapp2.RequestHandler):
->>>>>>> faab9ccfe7bb1c7fd1a6628a5387b44dbfe7401a
+
     def get(self):
         content = JINJA_ENV.get_template("templates/organizer.html")
         self.response.write(content.render())
