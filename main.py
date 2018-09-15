@@ -30,9 +30,13 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(homepage_template.render(content="hello, world"))
 
 class CalenderPage(webapp2.RequestHandler):
+
     def get(self):
+        calendar_template = JINJA_ENV.get_template("templates/divsForCalendar.html")
+        self.response.write(calendar_template.render())
 
 
 app = webapp2.WSGIApplication([
-    ('/', HomePage),
+('/', HomePage),
+('/calendar',CalenderPage)
 ], debug=True)
