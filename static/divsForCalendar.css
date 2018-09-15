@@ -43,7 +43,7 @@ td {
   margin-top: 90px;
 }
 #navigation {
-  position: fixed;
+  position: absolute;
   margin-top: -90px;
   margin-left: -20px;
   width: 1500px;
