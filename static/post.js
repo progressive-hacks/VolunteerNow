@@ -1,4 +1,4 @@
-function post_event(event_id) {
+function register_event(event_id) {
   $.ajax({
     url:"/volunteer",
     method:"POST",
@@ -6,7 +6,7 @@ function post_event(event_id) {
     data: {
         event: event_id,
     },
-    
+
     success: (response) => {
         $("#result").html(response);
       },

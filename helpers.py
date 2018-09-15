@@ -28,5 +28,9 @@ def get_this_week():
 
     return dates
 
+def create_datetime(string):
+    return datetime.strptime(string, '%Y/%m/%d/%H/%M')
+
+
 if __name__ == '__main__':
     print(get_this_week())

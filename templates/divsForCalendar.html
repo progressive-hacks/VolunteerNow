@@ -1,10 +1,14 @@
 <html>
   <head>
     <title>VolunteerNow</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/post.js"></script>
     <link rel="stylesheet" href="/static/divsForCalendar.css">
   </head>
 
   <body>
+    <button name="event-1" onclick="register_event(this.name)">Post This</button>
+    <div id="result"</div>
     <table>
     {%set days = ["Sun","Mon","Tues","Wednes","Thurs","Fri","Sat"]%}
 
@@ -14,6 +18,6 @@
     </td>
     {%endfor%}
   </table>
-  <a href={{logout}}>Logout</a>
+
   </body>
 </html>
