@@ -18,6 +18,19 @@
     </td>
     {%endfor%}
   </table>
+  <div>
+    <button name = "{{eventInfo}}" id="registerButton" onclick = "register()">
+      <form method = "put" action="/volunteer">
+      <input type = "text" name = "eventName" value= "{{eventInfo}}"></input>
+      <input type ="submit" value = "Register"></input>
+    </button>
+  </div>
 
   </body>
+  <script>
+  function register(){
+    eventRegistered = document.getElementById("registerButton")
+    console.log(eventRegistered.name)
+  }
+  </script>
 </html>

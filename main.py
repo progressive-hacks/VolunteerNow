@@ -17,14 +17,13 @@ JINJA_ENV = jinja2.Environment(
 class Event(ndb.Model):
     user = ndb.StringProperty();
     eventName = ndb.StringProperty();
-<<<<<<< HEAD
-    # start_time = TimeProperty();
-    # end_time = ndb.DateTimeProperty();
-=======
     start_time = ndb.DateTimeProperty();
     end_time = ndb.DateTimeProperty();
->>>>>>> ebfb460bc5985bd3001ba3361f33aa66f1fd0171
     description = ndb.TextProperty();
+class OrganizerData(ndb.Model):
+    user = ndb.StringProperty();
+    eventName = ndb.StringProperty();
+
     # geolocation = ndb.GeoPtProperty()
 # ________________________________________________________________________________
 # Autumn's comment: We need a organizer handler so that information can be
@@ -43,16 +42,6 @@ class HomePage(webapp2.RequestHandler):
 
         self.response.write(content.render(content=start_link))
 
-class VolunteerHandler(webapp2.RequestHandler):
-    def get(self):
-        content = JINJA_ENV.get_template("templates/divsForCalendar.html")
-        logout = users.create_logout_url('/')
-
-        self.response.write(content.render(logout=logout))
-
-    def post(self):
-        pass
-
 class OrganizerHandler(webapp2.RequestHandler):
     def get(self):
         content = JINJA_ENV.get_template("templates/organizer.html")
@@ -67,12 +56,27 @@ class OrganizerHandler(webapp2.RequestHandler):
 
         print(start_time, end_time)
 
-        EventData = Event(user = user, eventName = eventName, 
-            end_time = helpers.create_datetime(end_time), 
+        EventData = Event(user = user, eventName = eventName,
+            end_time = helpers.create_datetime(end_time),
             start_time = helpers.create_datetime(start_time),
             description = description)
-        
+
         EventData.put()
+
+class VolunteerHandler(webapp2.RequestHandler):
+    def post(self):
+        user = users.get_current_user().user_id()
+        eventName = self.request.get('eventName')
+        TransmittedData = OrganizerData(user = user, eventName=eventName)
+        TransmittedData.put()
+
+    def get(self):
+        content = JINJA_ENV.get_template("templates/divsForCalendar.html")
+        eventInfo = Event.query().get()
+        logout = users.create_logout_url('/')
+
+        self.response.write(content.render(logout=logout, eventInfo=eventInfo))
+
         #self.redirect('/volunteer')
 
 
