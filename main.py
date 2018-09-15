@@ -13,18 +13,21 @@ JINJA_ENV = jinja2.Environment(
     autoescape = True
 )
 
-"""
+
 class Event(ndb.Model):
-    user = ndb.StringProperty()
-    name = ndb.StringProperty()
-    start_time = ndb.DateTimeProperty()
-    end_time = ndb.DateTimeProperty()
-    description = ndb.TextProperty()
-    geolocation = ndb.GeoPtProperty()
-"""
+    user = ndb.StringProperty();
+    eventName = ndb.StringProperty();
+    # start_time = ndb.DateTimeProperty();
+    # end_time = ndb.DateTimeProperty();
+    description = ndb.TextProperty();
+    # geolocation = ndb.GeoPtProperty()
+# ________________________________________________________________________________
+# Autumn's comment: We need a organizer handler so that information can be
+# entered into the ndb database, then retrieved from it when the calendar page loads
+# ________________________________________________________________________________
 
 class HomePage(webapp2.RequestHandler):
-    
+
     def get(self):
         content = JINJA_ENV.get_template('templates/homepage.html')
         user = users.get_current_user()
@@ -36,13 +39,31 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(content.render(content=start_link))
 
 class CalenderView(webapp2.RequestHandler):
+    def post(self):
+        user = users.get_current_user().user_id()
+        eventName = self.request.get('eventName')
+        # start_time = self.request.get('start_time')
+        # end_time = self.request.get('end_time')
+        description = self.request.get('description')
 
+        EventData = Event(user = user, eventName = eventName, description = description)
+        EventData.put()
+        self.redirect('/volunteer')
     def get(self):
         content = JINJA_ENV.get_template("templates/divsForCalendar.html")
+        logout = users.create_logout_url('/')
+
+        self.response.write(content.render(logout=logout))
+
+class OrganizerView(webapp2.RequestHandler):
+    def get(self):
+        content = JINJA_ENV.get_template("templates/organizer.html")
         self.response.write(content.render())
 
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/volunteer', CalenderView)
+    ('/volunteer', CalenderView),
+    ('/organizer',OrganizerView)
+
 ], debug=True)
