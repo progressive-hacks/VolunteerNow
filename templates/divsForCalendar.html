@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>VolunteerNow</title>
+    <link rel="stylesheet" href="/static/divsForCalendar.css">
+  </head>
+
+  <body>
+    <table>
+    {%set days = ["Sun","Mon","Tues","Wednes","Thurs","Fri","Sat"]%}
+
+    {% for day in days%}
+      <td>
+      <th class = "dayOfWeek">{{day}}</th>
+    </td>
+    {%endfor%}
+  </table>
+
+  </body>
+</html>
