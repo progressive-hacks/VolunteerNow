@@ -11,7 +11,7 @@ JINJA_ENV = jinja2.Environment(
 
 
 class HomePage(webapp2.RequestHandler):
-    
+
     def get(self):
         homepage_template = JINJA_ENV.get_template('templates/homepage.html')
         self.response.write(homepage_template.render(content="hello, world"))
