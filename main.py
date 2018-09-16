@@ -26,6 +26,7 @@ class Event(ndb.Model):
 
     # geolocation = ndb.GeoPtProperty()
 
+
 """
 ________________________________________________________
 Autumn's comment: We need a organizer handler so that
@@ -35,8 +36,8 @@ ________________________________________________________
 
 """
 
-class HomePage(webapp2.RequestHandler):
 
+class HomePage(webapp2.RequestHandler):
 
     def get(self):
         content = JINJA_ENV.get_template('templates/frontpage.html')
@@ -47,6 +48,7 @@ class HomePage(webapp2.RequestHandler):
             start_link = users.create_login_url('/volunteer')
 
         self.response.write(content.render(content=start_link))
+
 
 class OrganizerHandler(webapp2.RequestHandler):
 
@@ -74,6 +76,7 @@ class OrganizerHandler(webapp2.RequestHandler):
         event.put()
         self.redirect('/organizer')
 
+
 class VolunteerHandler(webapp2.RequestHandler):
 
     def post(self):
@@ -98,10 +101,11 @@ class VolunteerHandler(webapp2.RequestHandler):
         )).fetch()
 
         logout = users.create_logout_url('/')
+        
         listOfDays=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]
+        
         for i in range(len(week)):
             week[i].append(listOfDays[i]);
-        print week
 
         def _get_dow(t):
             return listOfDays[(helpers._dow(t.month, t.day, t.year) + 6) % 7]
@@ -123,7 +127,6 @@ class VolunteerHandler(webapp2.RequestHandler):
                 event.event_name
             ])
 
-        print(lst)
         example = ["Mon","9"]
         self.response.write(content.render(week = week, lst = lst, example = example, logout=logout))
 
