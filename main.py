@@ -3,6 +3,8 @@ import webapp2
 import jinja2
 import helpers
 
+from datetime import datetime
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -26,8 +28,8 @@ class Event(ndb.Model):
 
 """
 ________________________________________________________
-Autumn's comment: We need a organizer handler so that 
-information can be entered into the ndb database, then 
+Autumn's comment: We need a organizer handler so that
+information can be entered into the ndb database, then
 retrieved from it when the calendar page loads
 ________________________________________________________
 
@@ -51,7 +53,7 @@ class OrganizerHandler(webapp2.RequestHandler):
     def get(self):
         content = JINJA_ENV.get_template("templates/organizer.html")
 
-        events = Event.query(Event.organizer 
+        events = Event.query(Event.organizer
                 == users.get_current_user()).order(Event.start_time)
 
         self.response.write(content.render(events = events))
@@ -73,7 +75,7 @@ class OrganizerHandler(webapp2.RequestHandler):
         self.redirect('/organizer')
 
 class VolunteerHandler(webapp2.RequestHandler):
-    
+
     def post(self):
         user = users.get_current_user().user_id()
         event_name = self.request.get('event_name')
@@ -82,10 +84,48 @@ class VolunteerHandler(webapp2.RequestHandler):
 
     def get(self):
         content = JINJA_ENV.get_template("templates/divsForCalendar.html")
-        eventInfo = Event.query().get()
-        logout = users.create_logout_url('/')
 
-        self.response.write(content.render(logout=logout, eventInfo=eventInfo))
+        # THIS WILL BREAK AT THE END OF DEC OR EARLY JAN.
+
+        #year = Event.start_time.year
+        week = helpers.get_this_week()
+        start_week = datetime(2018, week[0][0], week[0][1], 0, 0)
+        end_week = datetime(2018, week[-1][0], week[-1][1], 0, 0)
+
+        events = Event.query().filter(ndb.AND(
+                Event.start_time >= start_week,
+                Event.start_time <= end_week
+        )).fetch()
+
+        logout = users.create_logout_url('/')
+        listOfDays=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]
+        for i in range(len(week)):
+            week[i].append(listOfDays[i]);
+        print week
+
+        def _get_dow(t):
+            return listOfDays[(helpers._dow(t.month, t.day, t.year) + 6) % 7]
+
+        def _get_time(t):
+            return t.hour
+
+        lst = []
+        for event in events:
+            start_dow = _get_dow(event.start_time)
+            end_dow = _get_dow(event.final_time)
+
+            start_time = event.start_time.hour
+            end_time = event.final_time.hour
+
+            lst.append([
+                (start_dow, start_time),
+                (end_dow, end_time),
+                event.event_name
+            ])
+
+        print(lst)
+        example = ["Mon","9"]
+        self.response.write(content.render(week = week, lst = lst, example = example, logout=logout))
 
         #self.redirect('/volunteer')
 

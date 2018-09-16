@@ -47,8 +47,8 @@
       <table class = "calendar" style = "flex:0.3;">
         <tbody >
           <tr id ="days" style = "width: 100%; flex:0.3;">
-            {%set days = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
-            {% for day in days%}
+
+            {%for day in week %}
                 <td> {{day}}</td>
             {%endfor%}
           </tr>
@@ -66,36 +66,16 @@
   </tbody>
   </table>
 </div>
-  <!-- DivTable.com -->
 
-
-
-<!--
-    <button name="event-1" onclick="register_event(this.name)">Post This</button>
-    <div id="result"</div>
-    <table>
-    {%set days = ["Sun","Mon","Tues","Wednes","Thurs","Fri","Sat"]%}
-
-    {% for day in days%}
-      <td>
-      <th class = "dayOfWeek">{{day}}</th>
-    </td>
-    {%endfor%}
-  </table>
-  <div> -->
-    <!-- <button name = "{{eventInfo}}" id="registerButton" onclick = "register()"> -->
-      <!-- <form method = "put" action="/volunteer">
-      <input type = "text" name = "eventName" value= "{{eventInfo}}"></input>
-      <input type ="submit" value = "Register"></input> -->
-    <!-- </button> -->
   </div>
   <!-- <hr style="margin-top: 40px; width: 1175px"> -->
 
   </body>
-  <!-- <script>
-  function register(){
-    eventRegistered = document.getElementById("registerButton")
-    console.log(eventRegistered.name)
-  }
-  </script> -->
+  <script>
+    example = {{example}}
+    eventRegistered = document.getElementById(example[0] + " " + example[1])
+    eventRegistered.style.background = "red"
+
+
+  </script>
 </html>
