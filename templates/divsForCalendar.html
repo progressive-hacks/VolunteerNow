@@ -56,7 +56,7 @@
 
 
 <div style="display:flex; justify-content: center;">
-      <table class = "calendar" style = "flex:0.3;" a href = "/organizer">
+      <table  style = "flex:0.3;" a href = "/organizer">
         <tbody>
           <tr class ="days" style = "width: 100%; flex:0.3; background-color: #55acee; color: white; text-align: center; margin-bottom: 10px; border: none;">
 
@@ -66,7 +66,7 @@
           </tr>
           {%set rows =[" ","8","9","10",11,"12","13","14","15","16","17","18","19"]%}
           {%for row in rows%}
-          <tr id ="{{row}}" style = "width: 100%;flex:0.3;" onclick="Redirect();">
+          <tr id ="{{row}}" style = "width: 100%;flex:0.3;" onclick="Redirect();" class = "calendar">
               {%set columns=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
               {%for column in columns%}
                 <td id="{{column}} {{row}}"><a href="/organizer">&nbsp;</a></td>

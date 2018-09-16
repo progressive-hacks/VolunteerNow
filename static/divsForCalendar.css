@@ -19,6 +19,7 @@
 }
 td {
   border: 1px solid black;
+  text-align: middle !important;
 }
 .calendar {
     margin-left: 140px;
