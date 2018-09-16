@@ -77,7 +77,7 @@ class OrganizerHandler(webapp2.RequestHandler):
         )
 
         event.put()
-        self.redirect('/organizer')
+        self.redirect('/volunteer')
 
 
 class VolunteerHandler(webapp2.RequestHandler):
