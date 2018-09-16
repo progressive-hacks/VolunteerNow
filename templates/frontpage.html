@@ -28,54 +28,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 280px;
 }
 
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
 
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
 
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
@@ -91,17 +46,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
     text-align: center;
     text-decoration: none;
     position: relative;
-    top: 30%;
-    bottom: 70%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	text-align: middle;
     display: inline-block;
     font-size: 20px;
     margin: 4px 2px;
-    cursor: pointer;
+    cursor: pointer;:
 
 }
-.button1 {border-radius: 40%;
-
-
+.button1 {
+	border-radius: 50%;
+	}
+.button1:hover {
+    background-color: F7E323;
+    color: black;
 }
 body {
     background-image: url("http://www.kc-casa.org/wp-content/uploads/2014/02/KC-Website-Slider-Volunteer-v1.3-r2.gif");
@@ -112,11 +71,11 @@ body {
 h1 {
 	font-size: 55px;
 	position: relative;
-	top: 30px;
+	top: 60px;
 
 
 }
-<!--.dropbtn {
+.dropbtn {
     background-color: #4CAF50;
     color: white;
     padding: 16px;
@@ -127,7 +86,7 @@ h1 {
 .dropdown {
     position: fixed;
 	top: 0;
-	right: 15px;
+	right: 30px;
     display: inline-block;
 }
 
@@ -151,7 +110,7 @@ h1 {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}-->
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -182,30 +141,18 @@ window.onclick = function(event) {
 <div class="center">
   <h1 style="font-family:MV Boli"><b>Volunteer Now!!</b></h1>
 
-  <!-- <button class= "button button1">Go!!</button> -->
+  
 	<a href= "/volunteer" class= "button button1">Go!</a>
 </div>
 <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Menu</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-    <a href="#" onclick="openForm()">Sign in</a>
-	<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
+    <button onclick="myFunction()" class="dropbtn">Menu</button>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
-  </div>
+    </div>
 </div>
 <script>
 function openForm() {
