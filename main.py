@@ -1,9 +1,12 @@
 import os
+import json
 import webapp2
 import jinja2
 import helpers
 
 from datetime import datetime
+
+from itertools import imap
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -108,12 +111,12 @@ class VolunteerHandler(webapp2.RequestHandler):
             week[i].append(listOfDays[i]);
 
         def _get_dow(t):
-            return listOfDays[(helpers._dow(t.month, t.day, t.year) + 6) % 7]
+            return listOfDays[helpers._dow(t.month, t.day, t.year)]
 
         def _get_time(t):
             return t.hour
 
-        lst = []
+        data = []
         for event in events:
             start_dow = _get_dow(event.start_time)
             end_dow = _get_dow(event.final_time)
@@ -121,14 +124,17 @@ class VolunteerHandler(webapp2.RequestHandler):
             start_time = event.start_time.hour
             end_time = event.final_time.hour
 
-            lst.append([
-                (start_dow, start_time),
-                (end_dow, end_time),
-                event.event_name
+            data.append([
+                    " ".join([start_dow, str(start_time)]),
+                    " ".join([end_dow, str(end_time)]),
+                    event.event_name
             ])
 
-        example = ["Mon","9"]
-        self.response.write(content.render(week = week, lst = lst, example = example, logout=logout))
+        print(data)
+
+        self.response.write(content.render(
+            week = imap(lambda x: x[2] + " " + str(x[0]) + "/" + str(x[1])
+                , week), data = json.dumps(data), logout=logout))
 
         #self.redirect('/volunteer')
 

@@ -2,7 +2,7 @@
   <head>
     <title>VolunteerNow</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/post.js"></script>
+    <script src="/static/plugin.js"></script>
     <link rel="stylesheet" href="/static/divsForCalendar.css">
 
   </head>
@@ -12,13 +12,11 @@
       <div id = "homeButton"><a href = "/">VolunteerNow</a></div>
       <table id ="headerNavigation">
         <tr>
-          <td>About</td>
-          <td>Contact</td>
-          <td>Sign In</td>
+          <td><a href="{{logout}}">Sign out</a></td>
         </tr>
       </table>
     </div>
-    <h1 style = "margin-top: 100px; text-align: center; font-size: 50px; margin-bottom: -20px;">Schedule an Event!</h1>
+    <h5 style = "margin-top: 100px; text-align: center; font-size: 50px; margin-bottom: -20px;"><a href="/organizer" style="color:black">Schedule an Event!</a></h5>
     <div id = "container">
 <!-- ________________________________Original blue weekday heading_____________________________ -->
       <!-- <div id = "header">
@@ -71,11 +69,7 @@
   <!-- <hr style="margin-top: 40px; width: 1175px"> -->
 
   </body>
-  <script>
-    example = {{example}}
-    eventRegistered = document.getElementById(example[0] + " " + example[1])
-    eventRegistered.style.background = "red"
-
-
+  <script type="text/javascript">
+      data_handler(document, {{ data|safe }})
   </script>
 </html>
