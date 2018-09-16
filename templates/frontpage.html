@@ -1,16 +1,41 @@
 <html>
-<head>
-	<title>Volunteer Now!!</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-.center {
-    padding: 70px 0;
-
-    text-align: center;
+	<head>
+		<title>VolunteerNow</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			.center {
+    		padding: 70px 0;
+				text-align: center;
+			}
+		</style>
+<style>
+.blue {
+	background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
 }
 
-</style>
-<style>
+.blue:hover {
+  background-color: #6FC6FF;
+}
+#buttons {
+  padding-top: 50px;
+  text-align: center;
+}
+.btn {
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -48,7 +73,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     position: relative;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-	text-align: middle;
+		text-align: middle;
     display: inline-block;
     font-size: 20px;
     margin: 4px 2px;
@@ -63,31 +88,32 @@ body {font-family: Arial, Helvetica, sans-serif;}
     color: black;
 }
 body {
-    background-image: url("http://www.kc-casa.org/wp-content/uploads/2014/02/KC-Website-Slider-Volunteer-v1.3-r2.gif");
-	background-size: 100% 100%;
-	background-position: center;
+    background-image: url("static/background.jpg");
+		background-size: 100% 100%;
+		background-position: center;
     background-repeat: no-repeat;
 }
 h1 {
 	font-size: 55px;
 	position: relative;
 	top: 60px;
-
-
 }
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: #55acee;
     color: white;
     padding: 16px;
     font-size: 16px;
+		border-radius: 5px;
+		margin-top: -2px;
     border: none;
+		box-shadow: 0px 3px 0px 0px #3C93D5;
 }
 
 .dropdown {
-    position: fixed;
+  position: fixed;
 	top: 0;
 	right: 30px;
-    display: inline-block;
+  display: inline-block;
 }
 
 .dropdown-content {
@@ -110,7 +136,7 @@ h1 {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #6FC6FF;}
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -138,19 +164,19 @@ window.onclick = function(event) {
 
 <body>
 
-<div class="center">
-  <h1 style="font-family:MV Boli"><b>Volunteer Now!!</b></h1>
 
-  
-	<a href= "/volunteer" class= "button button1">Go!</a>
+<div id="buttons">
+  <a href="/volunteer" class="btn blue" style="margin-top: 100px;">Volunteer Now!</a>
 </div>
-<div class="dropdown">
+
+
+<div class="dropdown" style = "margin-right: 1150px;">
     <button onclick="myFunction()" class="dropbtn">Menu</button>
 
     <div id="myDropdown" class="dropdown-content">
         <a href="#">About</a>
         <a href="#">Contact</a>
-        
+
 
     </div>
 </div>
