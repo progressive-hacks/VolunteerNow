@@ -20,20 +20,20 @@
     </div>
     <h1 style = "margin-top: 100px; text-align: center; font-size: 50px; margin-bottom: -20px;">Schedule an Event!</h1>
     <div id = "container">
-
-      <div id = "header">
+<!-- ________________________________Original blue weekday heading_____________________________ -->
+      <!-- <div id = "header">
       <table>
       {%set days = [" ","Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
       {% for day in days%}
           <th class = "dayOfWeek">{{day}}</th>
       {%endfor%}
       </table>
-      </div>
+      </div> -->
+<!-- ________________________________Original blue weekday heading_____________________________ -->
 
+      <!-- <hr> -->
 
-      <hr>
-
-      {%set hours = ["8:00 am","9:00 am","10:00 am","11:00 am","12:00 pm","1:00 pm","2:00 pm","3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm", "8:00 pm"]%}
+      {%set hours = ["8:00 am","9:00 am","10:00 am","11:00 am","12:00 pm","1:00 pm","2:00 pm","3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm"]%}
       {% for hour in hours%}
       <table style>
         <td class = "timeInDay" style="list-style-type:none;">{{hour}}</td>
@@ -46,123 +46,23 @@
 <div style="display:flex; justify-content: center;">
       <table class = "calendar" style = "flex:0.3;">
         <tbody >
-          <tr style = "width: 100%;flex:0.3;">
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+          <tr id ="days" style = "width: 100%; flex:0.3;">
+            {%set days = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
+            {% for day in days%}
+                <td> {{day}}</td>
+            {%endfor%}
           </tr>
-          <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+          {%set rows =[" ","8","9","10",11,"12","13","14","15","16","17","18","19"]%}
+          {%for row in rows%}
+          <tr id ="{{row}}" style = "width: 100%;flex:0.3;">
+              {%set columns=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
+              {%for column in columns%}
+                <td id="{{column}} {{row}}">&nbsp;</td>
+              {%endfor%}
+
           </tr>
-          <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-          </tr>
-          <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-          </tr>
-          <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-          </tr>
-          <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
+          {%endfor%}
+
   </tbody>
   </table>
 </div>
@@ -189,7 +89,7 @@
       <input type ="submit" value = "Register"></input> -->
     <!-- </button> -->
   </div>
-  <hr style="margin-top: 40px; width: 1175px">
+  <!-- <hr style="margin-top: 40px; width: 1175px"> -->
 
   </body>
   <!-- <script>
