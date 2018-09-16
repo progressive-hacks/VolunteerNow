@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="/static/divsForCalendar.css">
 
   </head>
+  <script type="text/javascript">
+       function Redirect()
+       {
+        location.href="/organizer";
+       }
+  </script>
+  <style>
+  tr.days td{
+    border: none;
+    border-spacing: 5px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  </style>
 
   <body>
     <div id = "navigation">
@@ -16,7 +30,7 @@
         </tr>
       </table>
     </div>
-    <h5 style = "margin-top: 100px; text-align: center; font-size: 50px; margin-bottom: -20px;"><a href="/organizer" style="color:black">Schedule an Event!</a></h5>
+    <h5 style = "margin-top: 100px; text-align: center; font-size: 50px; margin-bottom: -20px; margin-left: 100px; color: black">Attend or Schedule an Event!</h5>
     <div id = "container">
 <!-- ________________________________Original blue weekday heading_____________________________ -->
       <!-- <div id = "header">
@@ -42,9 +56,9 @@
 
 
 <div style="display:flex; justify-content: center;">
-      <table class = "calendar" style = "flex:0.3;">
-        <tbody >
-          <tr id ="days" style = "width: 100%; flex:0.3;">
+      <table class = "calendar" style = "flex:0.3;" a href = "/organizer">
+        <tbody>
+          <tr class ="days" style = "width: 100%; flex:0.3; background-color: #55acee; color: white; text-align: center; margin-bottom: 10px; border: none;">
 
             {%for day in week %}
                 <td> {{day}}</td>
@@ -52,10 +66,10 @@
           </tr>
           {%set rows =[" ","8","9","10",11,"12","13","14","15","16","17","18","19"]%}
           {%for row in rows%}
-          <tr id ="{{row}}" style = "width: 100%;flex:0.3;">
+          <tr id ="{{row}}" style = "width: 100%;flex:0.3;" onclick="Redirect();">
               {%set columns=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"]%}
               {%for column in columns%}
-                <td id="{{column}} {{row}}">&nbsp;</td>
+                <td id="{{column}} {{row}}"><a href="/organizer">&nbsp;</a></td>
               {%endfor%}
 
           </tr>
