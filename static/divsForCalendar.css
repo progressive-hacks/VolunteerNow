@@ -23,10 +23,13 @@ td {
 }
 .calendar {
     margin-left: 140px;
+    margin-right: auto;
     margin-top: -507px;
     width: 1025px;
     height: 507.5px;
     padding: -10px;
+    text-align: center;
+
 }
 #header {
   background-color: #80b3ff;

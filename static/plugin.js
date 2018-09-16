@@ -26,7 +26,7 @@ function data_handler(doc, data) {
 
         console.log(start_time_id);
         doc.getElementById(start_time_id).innerHTML = event_name;
-        doc.getElementById(start_time_id).style.background = "green";
+        doc.getElementById(start_time_id).style.background = "#6ACC9B";
 
         index += 1;
 
