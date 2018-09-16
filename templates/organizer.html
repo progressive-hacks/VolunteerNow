@@ -1,14 +1,13 @@
 <html>
   <head>
-    <link rel= "stylesheet" href="static/organizer.css">
   </head>
   <body>
     <h1>Submit a volunteering event!</h1>
   <div class="centered">
-      <!-- <div class="group"> -  -->
-    <form method="post" action="/volunteer" >
+     <!-- <div class="group"> -  -->
+     <form method="post" action="/organizer" >
       <!-- <p>Enter event name:</p> <br> -->
-      <input type="text" id ="name" name="eventName" ></input>
+      <input type="text" id ="name" name="event_name" ></input>
       <label for="name">Event Name</label>
       <div class="bar"></div>
       <br>
@@ -24,7 +23,7 @@
       <div class="bar"></div>
       <br>
       <!-- <p> Enter end time (YYYY/MM/DD/hh/mm): </p> <br> -->
-      <input type="text" id ="name" name="end_time" ></input> -->
+      <input type="text" id ="name" name="final_time" ></input>
       <label for="name">End Time in (YYYY/MM/DD/hh/mm) </label>
       <div class="bar"></div>
       <br>
@@ -32,6 +31,6 @@
 
      </div>
   <!-- </div> -->
+  {{ events }}
   </body>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </html>
